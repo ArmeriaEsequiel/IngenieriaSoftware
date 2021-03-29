@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{%load static%}
+<html>
+<head>
+<lnk rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+<header>
+    <h1>ADMIN</h1>
+</header>
+</head>
+<body>
+<center>
+    <h2>Respuesta de la pregunta</h2>
+    <h3>"{{question.text_preg}}"</h3>
+    <h4>Modificar la respuesta: </h4>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" name="nueva_resp" value="{{answer.text_resp}}" size="30">
+        {% if answer.es_correcta %}
+            <h4 style="color:green">Esta respuesta es la correcta</h4>
+        {% endif %}
+        <br><input type="submit" value="Guardar">
+    </form>
+    </br></br>
+    <a href="{% url 'modificar' question.id %}">Volver</a>
+</center>
+</body>
+</html>
